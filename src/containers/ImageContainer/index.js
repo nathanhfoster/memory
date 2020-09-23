@@ -6,19 +6,20 @@ import './styles.css'
 const ImageContainer = () => {
   const [imagesFlipped, setImagesFlipped] = useState(0)
 
-  const [state, setState] = useState(getInitialState())
+  const [imageState, setImageState] = useState(getInitialState())
 
   const handleOnImageClick = useCallback(id => {
     setImagesFlipped(prevCount => ++prevCount)
-    setState(prevState => ({
+    setImageState(prevState => ({
       ...prevState,
       [id]: { ...prevState[id], isFlipped: !prevState[id].isFlipped },
     }))
   }, [])
 
+  // used to count the unique images flipped over
   const imageMatchMap = useMemo(
     () =>
-      Object.values(state).reduce((map, value) => {
+      Object.values(imageState).reduce((map, value) => {
         const { imageKey, isFlipped } = value
         const isFilppedNumber = Number(isFlipped)
 
@@ -30,14 +31,16 @@ const ImageContainer = () => {
 
         return map
       }, {}),
-    [state],
+    [imageState],
   )
 
+  // flip cards back when they're more than 1 image flipped
+  // keep cards flipped over if they have a match
   useLayoutEffect(() => {
     if (imagesFlipped > 1) {
       setTimeout(() => {
         setImagesFlipped(0)
-        setState(prevState =>
+        setImageState(prevState =>
           Object.entries(prevState).reduce(
             (nextState, [key, value]) => {
               const isFlipped = imageMatchMap[value.imageKey] === 2
@@ -53,7 +56,7 @@ const ImageContainer = () => {
 
   const gameWon = useMemo(() => Object.values(imageMatchMap).every(v => v > 1), [imageMatchMap])
 
-  const renderImages = Object.entries(state).map(([key, image]) => (
+  const renderImages = Object.entries(imageState).map(([key, image]) => (
     <Image
       key={key}
       id={key}

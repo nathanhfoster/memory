@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './styles.css'
 
 const Image = ({ id, isFlipped, isDisabled, onClick, ...imageProps }) => {
@@ -11,6 +12,15 @@ const Image = ({ id, isFlipped, isDisabled, onClick, ...imageProps }) => {
       {id}
     </div>
   )
+}
+
+Image.propTypes = {
+  id: PropTypes.string.isRequired,
+  isFlipped: PropTypes.bool.isRequired,
+  isDisabled: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
+  imageKey: PropTypes.string,
+  src: PropTypes.string,
 }
 
 export default React.memo(Image)
