@@ -57,7 +57,7 @@ const ImageContainer = () => {
     <Image
       key={key}
       id={key}
-      isDisabled={imagesFlipped > 1 || imageMatchMap[image.imageKey] > 1}
+      isDisabled={imagesFlipped > 1}
       onClick={handleOnImageClick}
       {...image}
     />
