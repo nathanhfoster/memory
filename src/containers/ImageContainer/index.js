@@ -16,7 +16,7 @@ const ImageContainer = () => {
     }))
   }, [])
 
-  // used to count the unique images flipped over
+  // used to count the unique images flippe d over
   const imageMatchMap = useMemo(
     () =>
       Object.values(imageState).reduce((map, value) => {
@@ -69,7 +69,7 @@ const ImageContainer = () => {
   return gameWon ? (
     <div className='won-game'>YOU WON!</div>
   ) : (
-    <div className='ImageContainer'>{renderImages}</div>
+    <div className={'ImageContainer'}>{renderImages}</div>
   )
 }
 

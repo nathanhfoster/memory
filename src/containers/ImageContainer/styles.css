@@ -6,7 +6,8 @@
 }
 
 .ImageContainer > div {
-  flex: 1 1 533px;
+  flex: 1 1 calc(100% / 4);
+  margin: 0.25rem;
 }
 
 .won-game {
@@ -19,4 +20,29 @@
   font-weight: bold;
   align-items: center;
   justify-content: center;
+}
+
+.flex-grid {
+  display: flex;
+}
+.flex-grid .col {
+  flex: 1;
+}
+.flex-grid-thirds {
+  display: flex;
+  justify-content: space-between;
+}
+.flex-grid-thirds .col {
+  width: calc(100% / 3);
+}
+
+@media (max-width: 400px) {
+  .flex-grid,
+  .flex-grid-thirds {
+    display: block;
+  }
+  .flex-grid-thirds .col {
+    width: 100%;
+    margin: 0 0 10px 0;
+  }
 }

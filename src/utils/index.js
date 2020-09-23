@@ -1,15 +1,14 @@
-import { fips } from 'crypto'
-
 const getRandomInt = (min = 0, max = Infinity - 1) =>
   Math.floor(Math.random() * (max - min + 1)) + min
 
 const shuffleArray = a => {
   let array = [...a]
+
   for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * i)
+    const randomIndex = getRandomInt(0, i)
     const temp = array[i]
-    array[i] = array[j]
-    array[j] = temp
+    array[i] = array[randomIndex]
+    array[randomIndex] = temp
   }
 
   return array

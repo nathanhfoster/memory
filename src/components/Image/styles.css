@@ -1,15 +1,41 @@
 .image {
   height: 100%;
-  width: 533px;
-  margin: 0.5rem;
-}
-.not-flipped {
+  width: 100%;
   background-color: black;
   color: white;
   display: flex;
   font-size: 40px;
   font-weight: bold;
-  /* margin: auto; */
   align-items: center;
   justify-content: center;
+}
+
+.image-front {
+  backface-visibility: hidden;
+}
+
+.image-back {
+  transform: rotateY(180deg);
+}
+
+.not-flipped-id {
+  position: relative;
+  font-size: 40px;
+  font-weight: bold;
+  left: 50%;
+}
+
+.not-flipped {
+  position: relative;
+  opacity: 0;
+
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
+.flipped {
+  transform: rotateY(180deg);
 }

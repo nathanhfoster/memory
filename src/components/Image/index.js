@@ -5,11 +5,15 @@ import './styles.css'
 const Image = ({ id, isFlipped, isDisabled, onClick, ...imageProps }) => {
   const handleOnClick = () => !isDisabled && onClick(id)
 
-  return isFlipped ? (
-    <img className='image' {...imageProps} alt={imageProps.id} onClick={handleOnClick} />
-  ) : (
-    <div className='image not-flipped' onClick={handleOnClick}>
-      {id}
+  return (
+    <div className='image'>
+      {!isFlipped && <span className='not-flipped-id'>{id}</span>}
+      <img
+        className={`${!isFlipped ? 'not-flipped' : 'flipped'} image`}
+        {...imageProps}
+        alt={imageProps.id}
+        onClick={handleOnClick}
+      />
     </div>
   )
 }
