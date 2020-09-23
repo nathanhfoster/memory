@@ -1,0 +1,22 @@
+.ImageContainer {
+  height: 300px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ImageContainer > div {
+  flex: 1 1 533px;
+}
+
+.won-game {
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  color: white;
+  display: flex;
+  font-size: 10rem;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+}
